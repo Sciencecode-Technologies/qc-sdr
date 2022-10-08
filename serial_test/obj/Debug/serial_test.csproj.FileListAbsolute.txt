@@ -20,3 +20,14 @@ C:\Users\sarslan\Desktop\serial_test\serial_test\obj\Debug\serial_test.Form1.res
 C:\Users\sarslan\Desktop\serial_test\serial_test\obj\Debug\serial_test.Properties.Resources.resources
 C:\Users\sarslan\Desktop\serial_test\serial_test\obj\Debug\serial_test.csproj.GenerateResource.cache
 C:\Users\sarslan\Desktop\serial_test\serial_test\obj\Debug\serial_test.csproj.CoreCompileInputs.cache
+F:\GitHubRepos\qc-sdr\serial_test\obj\Debug\serial_test.csproj.AssemblyReference.cache
+F:\GitHubRepos\qc-sdr\serial_test\obj\Debug\serial_test.csproj.SuggestedBindingRedirects.cache
+F:\GitHubRepos\qc-sdr\serial_test\obj\Debug\serial_test.Form1.resources
+F:\GitHubRepos\qc-sdr\serial_test\obj\Debug\serial_test.Properties.Resources.resources
+F:\GitHubRepos\qc-sdr\serial_test\obj\Debug\serial_test.csproj.GenerateResource.cache
+F:\GitHubRepos\qc-sdr\serial_test\obj\Debug\serial_test.csproj.CoreCompileInputs.cache
+F:\GitHubRepos\qc-sdr\serial_test\obj\Debug\serial_test.exe
+F:\GitHubRepos\qc-sdr\serial_test\obj\Debug\serial_test.pdb
+F:\GitHubRepos\qc-sdr\serial_test\bin\Debug\serial_test.exe.config
+F:\GitHubRepos\qc-sdr\serial_test\bin\Debug\serial_test.exe
+F:\GitHubRepos\qc-sdr\serial_test\bin\Debug\serial_test.pdb

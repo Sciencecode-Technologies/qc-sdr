@@ -26,7 +26,6 @@ namespace serial_test
         public SerialPort _serialPort_weight;
 
         private delegate void SetTextDeleg(string text);
-
         public Form1()
         {
             InitializeComponent();
@@ -51,22 +50,17 @@ namespace serial_test
         {
             com_info = textBox_com.Text;
 
-            _serialPort = new SerialPort(
+                _serialPort = new SerialPort(
                 com_info,
                 9600,
                 Parity.None,
                 8,
                 StopBits.One); // None?
             _serialPort.Handshake = Handshake.None;
-
-            _serialPort.Open(); // try catch gelecek
+            
+            _serialPort.Open();
 
             checkConnection(button_connect, _serialPort); // for color
-        }
-
-        private void textBox_com_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -129,12 +123,8 @@ namespace serial_test
             System.Windows.Forms.Clipboard.SetText(textBox_data.Text);
         }
 
-
         // WEIGHT SERIAL
         // BASKUL
-
-
-
         private void w_si_DataReceived(string data) { 
             data = data.Trim();
             string[] _data = data.Split(' ');
@@ -151,7 +141,6 @@ namespace serial_test
             //_serialPort.Read(RECV_DATA_BUFFER, 0, 12);
             this.BeginInvoke(new SetTextDeleg(w_si_DataReceived), new object[] { w_data });
         }
-
         private void button_connect_weight_Click(object sender, EventArgs e)
         {
             com_info = textBox_com_weight.Text;
@@ -187,8 +176,22 @@ namespace serial_test
 
             _serialPort_weight.DataReceived += new SerialDataReceivedEventHandler(w_sp_DataReceiver);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+
+/*
+ * 00
+ *  12.100
+ * 00
+ *  12.200
+ * 00
+ *  12.100
+ */
 
 //https://koddefteri.net/c-sharp/c-sharp-ile-seri-port-kullanimi.html
 //https://www.c-sharpcorner.com/uploadfile/eclipsed4utoo/communicating-with-serial-port-in-C-Sharp/

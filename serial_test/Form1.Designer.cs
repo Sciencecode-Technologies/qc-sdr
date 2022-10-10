@@ -471,7 +471,7 @@
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.Opacity = 0.99D;
-            this.Text = "SerialReader";
+            this.Text = "QC-SDR";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

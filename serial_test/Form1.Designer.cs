@@ -158,6 +158,7 @@
             // textBox_data
             // 
             this.textBox_data.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(111)))), ((int)(((byte)(255)))));
+            this.textBox_data.Enabled = false;
             this.textBox_data.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.textBox_data.ForeColor = System.Drawing.Color.White;
             this.textBox_data.Location = new System.Drawing.Point(93, 105);
@@ -362,7 +363,7 @@
             this.textBox_unitg.BackColor = System.Drawing.SystemColors.Info;
             this.textBox_unitg.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox_unitg.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBox_unitg.Location = new System.Drawing.Point(137, 91);
+            this.textBox_unitg.Location = new System.Drawing.Point(11, 94);
             this.textBox_unitg.Name = "textBox_unitg";
             this.textBox_unitg.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBox_unitg.Size = new System.Drawing.Size(100, 16);
@@ -372,12 +373,12 @@
             // 
             // textBox_result
             // 
-            this.textBox_result.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox_result.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox_result.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.textBox_result.ForeColor = System.Drawing.Color.Black;
             this.textBox_result.Location = new System.Drawing.Point(9, 116);
             this.textBox_result.Name = "textBox_result";
-            this.textBox_result.Size = new System.Drawing.Size(353, 38);
+            this.textBox_result.Size = new System.Drawing.Size(353, 31);
             this.textBox_result.TabIndex = 1;
             this.textBox_result.Text = "0";
             this.textBox_result.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -408,7 +409,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(143, 67);
+            this.label5.Location = new System.Drawing.Point(17, 70);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(88, 17);
             this.label5.TabIndex = 0;

@@ -187,7 +187,10 @@ namespace serial_test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            textBox_meter.Text = textBox_data.Text;
+            textBox_meter.Text = textBox_data.Text.Replace('.', ',');
+
+            //label_meter.ForeColor = Color.Green;
+
         }
         private double formula(double b, double m, double k, double r)
         {
@@ -209,16 +212,21 @@ namespace serial_test
 
         private void button_rolik_Click(object sender, EventArgs e)
         {
-            textBox_rolik.Text = textBox_data_weight.Text;
+            textBox_rolik.Text = textBox_data_weight.Text.Replace('.', ',');
         }
 
         private void button_weight_Click(object sender, EventArgs e)
         {
-            textBox_totalw.Text = textBox_data_weight.Text;
+            textBox_totalw.Text = textBox_data_weight.Text.Replace('.', ',');
         }
 
-        private void textBox_data_weight_TextChanged(object sender, EventArgs e)
+        private void button_clear_Click_1(object sender, EventArgs e)
         {
+            textBox_unitg.Text = "0";
+            textBox_result.Text = "0";
+            textBox_meter.Text = "0";
+            textBox_totalw.Text = "0";
+            textBox_rolik.Text = "0";
 
         }
     }

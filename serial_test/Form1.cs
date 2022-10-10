@@ -125,14 +125,16 @@ namespace serial_test
 
         // WEIGHT SERIAL
         // BASKUL
-        private void w_si_DataReceived(string data) { 
+        private void w_si_DataReceived(string data) {
             data = data.Trim();
-            string[] _data = data.Split(' ');
-            if (_data[_data.Length-2] == "")
-            {
-                textBox_data_weight.Text = _data[_data.Length - 1].ToString(); //-1 num, if -2 has a value then make num negative
+            string[] _data = data.Split('\r');
+            //if (_data[_data.Length - 2] == "")
+            //{
+                textBox_data_weight.Text = _data[_data.Length - 1].Trim(); //-1 num, if -2 has a value then make num negative
+            //}
 
-            }
+            Console.WriteLine(data); // sondan altı veriyi al
+            
         }
         private void w_sp_DataReceiver(object sender, SerialDataReceivedEventArgs e)
         {
@@ -172,12 +174,50 @@ namespace serial_test
 
         private void button_read_weight_Click(object sender, EventArgs e)
         {
+
+            if (_serialPort_weight.IsOpen != true)
+            {
+                _serialPort_weight.Open();
+            }
+
             textBox_data_weight.Text = "";
 
             _serialPort_weight.DataReceived += new SerialDataReceivedEventHandler(w_sp_DataReceiver);
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            textBox_meter.Text = textBox_data.Text;
+        }
+        private double formula(double b, double m, double k, double r)
+        {
+            return b * m * (k - r);
+        }
+        private void button5_Click(object sender, EventArgs e)
+        {
+            textBox_result.Text = formula(
+                double.Parse(textBox_unitg.Text),
+                double.Parse(textBox_totalw.Text),
+                double.Parse(textBox_meter.Text),
+                double.Parse(textBox_rolik.Text)).ToString();
+        }
+
+        private void button_copy_Click_1(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Clipboard.SetText(textBox_result.Text);
+        }
+
+        private void button_rolik_Click(object sender, EventArgs e)
+        {
+            textBox_rolik.Text = textBox_data_weight.Text;
+        }
+
+        private void button_weight_Click(object sender, EventArgs e)
+        {
+            textBox_totalw.Text = textBox_data_weight.Text;
+        }
+
+        private void textBox_data_weight_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -191,6 +231,8 @@ namespace serial_test
  *  12.200
  * 00
  *  12.100
+ *  
+ *  00\r\n12.100
  */
 
 //https://koddefteri.net/c-sharp/c-sharp-ile-seri-port-kullanimi.html

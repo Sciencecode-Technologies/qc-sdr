@@ -34,26 +34,31 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button_connect = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox_data = new System.Windows.Forms.TextBox();
             this.button_copy = new System.Windows.Forms.Button();
             this.button_reset = new System.Windows.Forms.Button();
+            this.button_save = new System.Windows.Forms.Button();
+            this.textBox_data = new System.Windows.Forms.TextBox();
             this.button_read = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button_read_weight = new System.Windows.Forms.Button();
-            this.button_copy_weight = new System.Windows.Forms.Button();
-            this.textBox_data_weight = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button_disconnect_weight = new System.Windows.Forms.Button();
             this.button_connect_weight = new System.Windows.Forms.Button();
             this.textBox_com_weight = new System.Windows.Forms.TextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button_save = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.button_read_weight = new System.Windows.Forms.Button();
+            this.button_copy_weight = new System.Windows.Forms.Button();
+            this.textBox_data_weight = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox_com
@@ -97,9 +102,9 @@
             this.button_connect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button_connect.FlatAppearance.BorderSize = 0;
             this.button_connect.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button_connect.Location = new System.Drawing.Point(8, 48);
+            this.button_connect.Location = new System.Drawing.Point(6, 48);
             this.button_connect.Name = "button_connect";
-            this.button_connect.Size = new System.Drawing.Size(67, 36);
+            this.button_connect.Size = new System.Drawing.Size(69, 36);
             this.button_connect.TabIndex = 3;
             this.button_connect.Text = "Bağlan";
             this.button_connect.UseVisualStyleBackColor = false;
@@ -119,16 +124,6 @@
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Metre";
-            // 
-            // textBox_data
-            // 
-            this.textBox_data.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox_data.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.textBox_data.Location = new System.Drawing.Point(93, 105);
-            this.textBox_data.Name = "textBox_data";
-            this.textBox_data.Size = new System.Drawing.Size(195, 35);
-            this.textBox_data.TabIndex = 1;
-            this.textBox_data.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button_copy
             // 
@@ -153,6 +148,28 @@
             this.button_reset.Text = "Reset";
             this.button_reset.UseVisualStyleBackColor = false;
             this.button_reset.Click += new System.EventHandler(this.button_reset_Click);
+            // 
+            // button_save
+            // 
+            this.button_save.BackColor = System.Drawing.SystemColors.Control;
+            this.button_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button_save.Location = new System.Drawing.Point(93, 62);
+            this.button_save.Name = "button_save";
+            this.button_save.Size = new System.Drawing.Size(195, 36);
+            this.button_save.TabIndex = 4;
+            this.button_save.Text = "Kaydet";
+            this.button_save.UseVisualStyleBackColor = false;
+            this.button_save.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textBox_data
+            // 
+            this.textBox_data.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox_data.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.textBox_data.Location = new System.Drawing.Point(93, 105);
+            this.textBox_data.Name = "textBox_data";
+            this.textBox_data.Size = new System.Drawing.Size(195, 35);
+            this.textBox_data.TabIndex = 1;
+            this.textBox_data.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button_read
             // 
@@ -190,40 +207,39 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Ağırlık";
             // 
-            // button_read_weight
+            // button3
             // 
-            this.button_read_weight.BackColor = System.Drawing.SystemColors.Control;
-            this.button_read_weight.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button_read_weight.Location = new System.Drawing.Point(93, 19);
-            this.button_read_weight.Name = "button_read_weight";
-            this.button_read_weight.Size = new System.Drawing.Size(92, 29);
-            this.button_read_weight.TabIndex = 4;
-            this.button_read_weight.Text = "Oku";
-            this.button_read_weight.UseVisualStyleBackColor = false;
-            this.button_read_weight.Click += new System.EventHandler(this.button_read_weight_Click);
+            this.button3.BackColor = System.Drawing.SystemColors.Control;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button3.Location = new System.Drawing.Point(191, 54);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(97, 33);
+            this.button3.TabIndex = 5;
+            this.button3.Text = "Rolik Kaydet";
+            this.button3.UseVisualStyleBackColor = false;
             // 
-            // button_copy_weight
+            // button1
             // 
-            this.button_copy_weight.BackColor = System.Drawing.SystemColors.Control;
-            this.button_copy_weight.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button_copy_weight.Location = new System.Drawing.Point(191, 20);
-            this.button_copy_weight.Name = "button_copy_weight";
-            this.button_copy_weight.Size = new System.Drawing.Size(97, 28);
-            this.button_copy_weight.TabIndex = 4;
-            this.button_copy_weight.Text = "Kopyala";
-            this.button_copy_weight.UseVisualStyleBackColor = false;
-            this.button_copy_weight.Click += new System.EventHandler(this.button_copy_weight_Click);
+            this.button1.BackColor = System.Drawing.SystemColors.Control;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button1.Location = new System.Drawing.Point(93, 54);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(92, 33);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Kaydet";
+            this.button1.UseVisualStyleBackColor = false;
             // 
-            // textBox_data_weight
+            // groupBox4
             // 
-            this.textBox_data_weight.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox_data_weight.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
-            this.textBox_data_weight.Location = new System.Drawing.Point(93, 117);
-            this.textBox_data_weight.Name = "textBox_data_weight";
-            this.textBox_data_weight.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox_data_weight.Size = new System.Drawing.Size(195, 33);
-            this.textBox_data_weight.TabIndex = 0;
-            this.textBox_data_weight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.groupBox4.Controls.Add(this.button_disconnect_weight);
+            this.groupBox4.Controls.Add(this.button_connect_weight);
+            this.groupBox4.Controls.Add(this.textBox_com_weight);
+            this.groupBox4.Location = new System.Drawing.Point(6, 13);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(81, 143);
+            this.groupBox4.TabIndex = 4;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Ayarlar";
             // 
             // button_disconnect_weight
             // 
@@ -262,58 +278,90 @@
             this.textBox_com_weight.Text = "COM5";
             this.textBox_com_weight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // groupBox4
+            // button_read_weight
             // 
-            this.groupBox4.Controls.Add(this.button_disconnect_weight);
-            this.groupBox4.Controls.Add(this.button_connect_weight);
-            this.groupBox4.Controls.Add(this.textBox_com_weight);
-            this.groupBox4.Location = new System.Drawing.Point(6, 13);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(81, 143);
-            this.groupBox4.TabIndex = 4;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Ayarlar";
+            this.button_read_weight.BackColor = System.Drawing.SystemColors.Control;
+            this.button_read_weight.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button_read_weight.Location = new System.Drawing.Point(93, 19);
+            this.button_read_weight.Name = "button_read_weight";
+            this.button_read_weight.Size = new System.Drawing.Size(92, 29);
+            this.button_read_weight.TabIndex = 4;
+            this.button_read_weight.Text = "Oku";
+            this.button_read_weight.UseVisualStyleBackColor = false;
+            this.button_read_weight.Click += new System.EventHandler(this.button_read_weight_Click);
             // 
-            // button_save
+            // button_copy_weight
             // 
-            this.button_save.BackColor = System.Drawing.SystemColors.Control;
-            this.button_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button_save.Location = new System.Drawing.Point(96, 62);
-            this.button_save.Name = "button_save";
-            this.button_save.Size = new System.Drawing.Size(192, 36);
-            this.button_save.TabIndex = 4;
-            this.button_save.Text = "Kaydet";
-            this.button_save.UseVisualStyleBackColor = false;
-            this.button_save.Click += new System.EventHandler(this.button1_Click);
+            this.button_copy_weight.BackColor = System.Drawing.SystemColors.Control;
+            this.button_copy_weight.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button_copy_weight.Location = new System.Drawing.Point(191, 20);
+            this.button_copy_weight.Name = "button_copy_weight";
+            this.button_copy_weight.Size = new System.Drawing.Size(97, 28);
+            this.button_copy_weight.TabIndex = 4;
+            this.button_copy_weight.Text = "Kopyala";
+            this.button_copy_weight.UseVisualStyleBackColor = false;
+            this.button_copy_weight.Click += new System.EventHandler(this.button_copy_weight_Click);
             // 
-            // button1
+            // textBox_data_weight
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Control;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button1.Location = new System.Drawing.Point(93, 54);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 33);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Kaydet";
-            this.button1.UseVisualStyleBackColor = false;
+            this.textBox_data_weight.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox_data_weight.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
+            this.textBox_data_weight.Location = new System.Drawing.Point(93, 111);
+            this.textBox_data_weight.Name = "textBox_data_weight";
+            this.textBox_data_weight.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textBox_data_weight.Size = new System.Drawing.Size(195, 33);
+            this.textBox_data_weight.TabIndex = 0;
+            this.textBox_data_weight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button3
+            // groupBox5
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.Control;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button3.Location = new System.Drawing.Point(191, 54);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(97, 33);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Rolik Kaydet";
-            this.button3.UseVisualStyleBackColor = false;
+            this.groupBox5.Controls.Add(this.label4);
+            this.groupBox5.Controls.Add(this.label3);
+            this.groupBox5.Controls.Add(this.label2);
+            this.groupBox5.Location = new System.Drawing.Point(312, 12);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(368, 329);
+            this.groupBox5.TabIndex = 6;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Bilgiler";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(6, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(94, 17);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Rolik Ağırlık";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(147, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(111, 17);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Toplam Ağırlık";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.label4.Location = new System.Drawing.Point(318, 20);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 17);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Metre";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(321, 361);
+            this.ClientSize = new System.Drawing.Size(692, 361);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
@@ -332,6 +380,8 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -359,6 +409,10 @@
         private System.Windows.Forms.Button button_save;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }
 

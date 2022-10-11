@@ -291,7 +291,7 @@
             // textBox_data_weight
             // 
             this.textBox_data_weight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(111)))), ((int)(((byte)(255)))));
-            this.textBox_data_weight.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
+            this.textBox_data_weight.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold);
             this.textBox_data_weight.ForeColor = System.Drawing.Color.White;
             this.textBox_data_weight.Location = new System.Drawing.Point(93, 146);
             this.textBox_data_weight.Name = "textBox_data_weight";

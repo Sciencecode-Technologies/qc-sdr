@@ -69,7 +69,7 @@ namespace serial_test
 
             checkConnection(button_connect, _serialPort);
         }
-        private void si_DataReceived(string data) { textBox_data.Text = Math.Round(float.Parse(data.Trim(), CultureInfo.InvariantCulture.NumberFormat)).ToString(); }
+        private void si_DataReceived(string data) { textBox_data.Text = Math.Round(float.Parse(data.Trim(), CultureInfo.InvariantCulture.NumberFormat),3).ToString(); }
         private void sp_DataReceiver(object sender, SerialDataReceivedEventArgs e)
         {
             Thread.Sleep(100);
@@ -130,10 +130,10 @@ namespace serial_test
             string[] _data = data.Split('\r');
             //if (_data[_data.Length - 2] == "")
             //{
-                textBox_data_weight.Text = _data[_data.Length - 1].Trim(); //-1 num, if -2 has a value then make num negative
+            textBox_data_weight.Text = _data[_data.Length - 1].Trim(); //-1 num, if -2 has a value then make num negative
             //}
 
-            Console.WriteLine(data); // sondan altı veriyi al
+            //Console.WriteLine(data); // sondan altı veriyi al
             
         }
         private void w_sp_DataReceiver(object sender, SerialDataReceivedEventArgs e)

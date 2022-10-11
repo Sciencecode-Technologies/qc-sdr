@@ -158,7 +158,6 @@
             // textBox_data
             // 
             this.textBox_data.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(111)))), ((int)(((byte)(255)))));
-            this.textBox_data.Enabled = false;
             this.textBox_data.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.textBox_data.ForeColor = System.Drawing.Color.White;
             this.textBox_data.Location = new System.Drawing.Point(93, 105);

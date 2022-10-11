@@ -13,7 +13,6 @@ namespace serial_test
         private string author;
 
         public bool check_state = false;
-        private DateTime localDate = DateTime.Now;
 
         private string[] titles = new string[] {
             "rolik_weight",
@@ -68,7 +67,7 @@ namespace serial_test
                     + "," + m.Replace(',', '.')
                     + "," + result.Replace(',', '.')
                     + "," + this.author
-                    + "," + localDate);
+                    + "," + DateTime.Now);
 
             return state;
         }

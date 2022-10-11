@@ -243,11 +243,6 @@ namespace serial_test
             textBox_rolik.Text = "0";
 
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
     }
 }
 

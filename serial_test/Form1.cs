@@ -13,6 +13,8 @@ using System.Threading;
 using System.Globalization;
 using System.Reflection;
 using System.Xml.Linq;
+using static serial_test.csv_file_writer;
+
 
 namespace serial_test
 {
@@ -21,6 +23,11 @@ namespace serial_test
         public string com_info;
         public string m_data;
         public string received_data;
+
+        csv_file_writer csvfw = new csv_file_writer(
+            @"\\192.168.0.12\Data\Bilgiislem\Suha\.service_folder\qc-sdr",
+            "qcsdr_data.csv",
+            System.Net.Dns.GetHostName());
 
         public SerialPort _serialPort;
         public SerialPort _serialPort_weight;
@@ -203,6 +210,13 @@ namespace serial_test
                 double.Parse(textBox_totalw.Text),
                 double.Parse(textBox_meter.Text),
                 double.Parse(textBox_rolik.Text)).ToString();
+
+            csvfw.add_row(
+                textBox_rolik.Text,
+                textBox_totalw.Text,
+                textBox_unitg.Text,
+                textBox_meter.Text,
+                textBox_result.Text);
         }
 
         private void button_copy_Click_1(object sender, EventArgs e)
@@ -228,6 +242,11 @@ namespace serial_test
             textBox_totalw.Text = "0";
             textBox_rolik.Text = "0";
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

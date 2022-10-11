@@ -471,6 +471,7 @@
             this.Name = "Form1";
             this.Opacity = 0.99D;
             this.Text = "QC-SDR";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

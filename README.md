@@ -1,2 +1,2 @@
-# qc-sdr
-RS232, BRL-404 manager.
+# QC-SDR
+RS232 serial data reader.

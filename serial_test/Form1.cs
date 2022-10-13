@@ -27,7 +27,7 @@ namespace serial_test
         public System.Windows.Forms.Timer tm;
 
         csv_file_writer csvfw = new csv_file_writer(
-            @"\\192.168.0.12\Data\Bilgiislem\Suha\.service_folder\qc-sdr",
+            @".", //\\192.168.0.12\Data\Bilgiislem\Suha\.service_folder\qc-sdr
             "qcsdr_data.csv",
             System.Net.Dns.GetHostName());
 
@@ -271,7 +271,7 @@ namespace serial_test
         {
             System.Windows.Forms.Clipboard.SetText(textBox_meter.Text);
         }
-        bool off_details_flag = false;
+        private bool off_details_flag = false;
         private void textBox_commget_TextChanged(object sender, EventArgs e)
         {
             if (textBox_commget.Text == "off_details")
@@ -285,25 +285,48 @@ namespace serial_test
                     groupBox1.Visible = false;
                     groupBox4.Visible = false;
 
+                    defaults[2] = button_read.Visible;
                     button_read.Visible = false;
+                    defaults[3] = button_reset.Visible = false;
                     button_reset.Visible = false;
+                    defaults[4] = button_read_weight.Visible = false;
                     button_read_weight.Visible = false;
 
+                    defaults[5] = textBox_data.Location;
                     textBox_data.Location = new Point(6, textBox_data.Location.Y);
+                    defaults[6] = button_save.Location;
                     button_save.Location = new Point(6, button_save.Location.Y);
 
+                    defaults[7] = textBox_data_weight.Location;
                     textBox_data_weight.Location = new Point(6, textBox_data_weight.Location.Y);
+                    defaults[8] = button_rolik.Location;
                     button_rolik.Location = new Point(6, button_rolik.Location.Y);
+                    defaults[9] = button_weight.Location;
                     button_weight.Location = new Point(6, button_weight.Location.Y);
 
+                    defaults[10] = groupBox2.Size;
                     groupBox2.Size = new Size(groupBox2.Size.Width - groupBox1.Size.Width, groupBox2.Size.Height);
+                    defaults[11] = groupBox3.Size;
                     groupBox3.Size = new Size(groupBox3.Size.Width - groupBox1.Size.Width, groupBox3.Size.Height);
 
+                    defaults[12] = groupBox5.Location;
                     groupBox5.Location = new Point(groupBox5.Location.X - groupBox3.Location.X - 70, groupBox5.Location.Y);
 
+                    defaults[13] = this.Size;
                     this.Size = new Size(this.Size.Width - 81, this.Size.Height);
 
+                    defaults[14] = textBox_commget.Size;
                     textBox_commget.Size = new Size(textBox_commget.Size.Width - 81, textBox_commget.Size.Height);
+                }
+                else
+                {
+                    textBox_commget.ForeColor = Color.LightPink;
+                }
+            }else if (textBox_commget.Text == "on_details")
+            {
+                if (off_details_flag)
+                {
+                    off_details_flag = true;
                 }
                 else
                 {

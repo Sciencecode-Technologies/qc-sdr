@@ -23,6 +23,8 @@ namespace serial_test
         public string com_info;
         public string m_data;
         public string received_data;
+        
+        public System.Windows.Forms.Timer tm;
 
         csv_file_writer csvfw = new csv_file_writer(
             @"\\192.168.0.12\Data\Bilgiislem\Suha\.service_folder\qc-sdr",
@@ -68,6 +70,21 @@ namespace serial_test
             _serialPort.Open();
 
             checkConnection(button_connect, _serialPort); // for color
+
+
+            //Setup Timer
+            tm = new System.Windows.Forms.Timer();
+            tm.Tick += new EventHandler(tm_Tick);
+            tm.Interval = 1000; //in ms
+            tm.Enabled = true;  //Start timer
+
+        }
+        void tm_Tick(object sender, EventArgs e)
+        {
+            if (!_serialPort.IsOpen)
+                _serialPort.Open();
+
+            button_read_Click(sender, e);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -211,6 +228,8 @@ namespace serial_test
                 double.Parse(textBox_meter.Text),
                 double.Parse(textBox_rolik.Text)).ToString();
 
+            textBox_net_weight.Text = (double.Parse(textBox_totalw.Text) - double.Parse(textBox_rolik.Text)).ToString();
+
             csvfw.add_row(
                 textBox_rolik.Text,
                 textBox_totalw.Text,
@@ -242,6 +261,16 @@ namespace serial_test
             textBox_totalw.Text = "0";
             textBox_rolik.Text = "0";
 
+        }
+
+        private void button_net_weight_copy_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Clipboard.SetText((double.Parse(textBox_totalw.Text) - double.Parse(textBox_rolik.Text)).ToString());
+        }
+
+        private void button_meter_copy_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Clipboard.SetText(textBox_meter.Text);
         }
     }
 }

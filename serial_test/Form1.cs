@@ -271,36 +271,44 @@ namespace serial_test
         {
             System.Windows.Forms.Clipboard.SetText(textBox_meter.Text);
         }
-
+        bool off_details_flag = false;
         private void textBox_commget_TextChanged(object sender, EventArgs e)
         {
             if (textBox_commget.Text == "off_details")
             {
-                textBox_commget.ForeColor = Color.LightGreen;
-                // worked
+                if (!off_details_flag)
+                {
+                    off_details_flag = true;
+                    textBox_commget.ForeColor = Color.LightGreen;
+                    // worked
 
-                groupBox1.Visible = false;
-                groupBox4.Visible = false;
+                    groupBox1.Visible = false;
+                    groupBox4.Visible = false;
 
-                button_read.Visible = false;
-                button_reset.Visible = false;
-                button_read_weight.Visible = false;
+                    button_read.Visible = false;
+                    button_reset.Visible = false;
+                    button_read_weight.Visible = false;
 
-                textBox_data.Location = new Point(6, textBox_data.Location.Y);
-                button_save.Location = new Point(6, button_save.Location.Y);
+                    textBox_data.Location = new Point(6, textBox_data.Location.Y);
+                    button_save.Location = new Point(6, button_save.Location.Y);
 
-                textBox_data_weight.Location = new Point(6, textBox_data_weight.Location.Y);
-                button_rolik.Location = new Point(6, button_rolik.Location.Y);
-                button_weight.Location = new Point(6, button_weight.Location.Y);
+                    textBox_data_weight.Location = new Point(6, textBox_data_weight.Location.Y);
+                    button_rolik.Location = new Point(6, button_rolik.Location.Y);
+                    button_weight.Location = new Point(6, button_weight.Location.Y);
 
-                groupBox2.Size = new Size(groupBox2.Size.Width - groupBox1.Size.Width, groupBox2.Size.Height);
-                groupBox3.Size = new Size(groupBox3.Size.Width - groupBox1.Size.Width, groupBox3.Size.Height);
+                    groupBox2.Size = new Size(groupBox2.Size.Width - groupBox1.Size.Width, groupBox2.Size.Height);
+                    groupBox3.Size = new Size(groupBox3.Size.Width - groupBox1.Size.Width, groupBox3.Size.Height);
 
-                groupBox5.Location = new Point(groupBox5.Location.X - groupBox3.Location.X - 70, groupBox5.Location.Y);
-                
-                this.Size = new Size(this.Size.Width - 81, this.Size.Height);
-                
-                textBox_commget.Size = new Size(textBox_commget.Size.Width - 81, textBox_commget.Size.Height);
+                    groupBox5.Location = new Point(groupBox5.Location.X - groupBox3.Location.X - 70, groupBox5.Location.Y);
+
+                    this.Size = new Size(this.Size.Width - 81, this.Size.Height);
+
+                    textBox_commget.Size = new Size(textBox_commget.Size.Width - 81, textBox_commget.Size.Height);
+                }
+                else
+                {
+                    textBox_commget.ForeColor = Color.LightPink;
+                }
             }
             else
             {

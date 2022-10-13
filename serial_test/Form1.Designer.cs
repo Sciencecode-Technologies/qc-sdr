@@ -67,6 +67,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.textBox_commget = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -128,8 +129,8 @@
             this.groupBox2.Controls.Add(this.button_reset);
             this.groupBox2.Controls.Add(this.button_save);
             this.groupBox2.Controls.Add(this.textBox_data);
-            this.groupBox2.Controls.Add(this.button_read);
             this.groupBox2.Controls.Add(this.groupBox1);
+            this.groupBox2.Controls.Add(this.button_read);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(294, 154);
@@ -141,7 +142,7 @@
             // 
             this.button_reset.BackColor = System.Drawing.SystemColors.Control;
             this.button_reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button_reset.Location = new System.Drawing.Point(234, 20);
+            this.button_reset.Location = new System.Drawing.Point(231, 104);
             this.button_reset.Name = "button_reset";
             this.button_reset.Size = new System.Drawing.Size(54, 36);
             this.button_reset.TabIndex = 3;
@@ -153,7 +154,7 @@
             // 
             this.button_save.BackColor = System.Drawing.SystemColors.Control;
             this.button_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button_save.Location = new System.Drawing.Point(93, 62);
+            this.button_save.Location = new System.Drawing.Point(93, 59);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(195, 36);
             this.button_save.TabIndex = 4;
@@ -166,7 +167,7 @@
             this.textBox_data.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(111)))), ((int)(((byte)(255)))));
             this.textBox_data.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.textBox_data.ForeColor = System.Drawing.Color.White;
-            this.textBox_data.Location = new System.Drawing.Point(93, 105);
+            this.textBox_data.Location = new System.Drawing.Point(93, 20);
             this.textBox_data.Name = "textBox_data";
             this.textBox_data.Size = new System.Drawing.Size(195, 35);
             this.textBox_data.TabIndex = 1;
@@ -176,7 +177,7 @@
             // 
             this.button_read.BackColor = System.Drawing.SystemColors.Control;
             this.button_read.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button_read.Location = new System.Drawing.Point(96, 20);
+            this.button_read.Location = new System.Drawing.Point(93, 104);
             this.button_read.Name = "button_read";
             this.button_read.Size = new System.Drawing.Size(132, 36);
             this.button_read.TabIndex = 3;
@@ -199,8 +200,8 @@
             this.groupBox3.Controls.Add(this.button_rolik);
             this.groupBox3.Controls.Add(this.button_weight);
             this.groupBox3.Controls.Add(this.groupBox4);
-            this.groupBox3.Controls.Add(this.button_read_weight);
             this.groupBox3.Controls.Add(this.textBox_data_weight);
+            this.groupBox3.Controls.Add(this.button_read_weight);
             this.groupBox3.Location = new System.Drawing.Point(12, 172);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(294, 185);
@@ -212,7 +213,7 @@
             // 
             this.button_rolik.BackColor = System.Drawing.SystemColors.Control;
             this.button_rolik.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button_rolik.Location = new System.Drawing.Point(93, 54);
+            this.button_rolik.Location = new System.Drawing.Point(93, 58);
             this.button_rolik.Name = "button_rolik";
             this.button_rolik.Size = new System.Drawing.Size(195, 43);
             this.button_rolik.TabIndex = 5;
@@ -224,7 +225,7 @@
             // 
             this.button_weight.BackColor = System.Drawing.SystemColors.Control;
             this.button_weight.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button_weight.Location = new System.Drawing.Point(93, 103);
+            this.button_weight.Location = new System.Drawing.Point(93, 107);
             this.button_weight.Name = "button_weight";
             this.button_weight.Size = new System.Drawing.Size(195, 37);
             this.button_weight.TabIndex = 5;
@@ -286,7 +287,7 @@
             // 
             this.button_read_weight.BackColor = System.Drawing.SystemColors.Control;
             this.button_read_weight.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button_read_weight.Location = new System.Drawing.Point(93, 19);
+            this.button_read_weight.Location = new System.Drawing.Point(93, 147);
             this.button_read_weight.Name = "button_read_weight";
             this.button_read_weight.Size = new System.Drawing.Size(195, 29);
             this.button_read_weight.TabIndex = 4;
@@ -299,7 +300,7 @@
             this.textBox_data_weight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(111)))), ((int)(((byte)(255)))));
             this.textBox_data_weight.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold);
             this.textBox_data_weight.ForeColor = System.Drawing.Color.White;
-            this.textBox_data_weight.Location = new System.Drawing.Point(93, 146);
+            this.textBox_data_weight.Location = new System.Drawing.Point(93, 19);
             this.textBox_data_weight.Name = "textBox_data_weight";
             this.textBox_data_weight.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBox_data_weight.Size = new System.Drawing.Size(195, 33);
@@ -510,12 +511,25 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Rolik Ağırlık";
             // 
+            // textBox_commget
+            // 
+            this.textBox_commget.BackColor = System.Drawing.Color.Black;
+            this.textBox_commget.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox_commget.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_commget.ForeColor = System.Drawing.SystemColors.Info;
+            this.textBox_commget.Location = new System.Drawing.Point(12, 363);
+            this.textBox_commget.Name = "textBox_commget";
+            this.textBox_commget.Size = new System.Drawing.Size(668, 13);
+            this.textBox_commget.TabIndex = 7;
+            this.textBox_commget.TextChanged += new System.EventHandler(this.textBox_commget_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(692, 370);
+            this.ClientSize = new System.Drawing.Size(692, 381);
+            this.Controls.Add(this.textBox_commget);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -537,6 +551,7 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -578,6 +593,7 @@
         private System.Windows.Forms.TextBox textBox_net_weight;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TextBox textBox_commget;
     }
 }
 

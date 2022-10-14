@@ -20,7 +20,7 @@ namespace serial_test
 {
     public partial class Form1 : Form
     {
-        public string com_info;
+        public string com_info = "COM5";
         public string m_data;
         public string received_data;
         
@@ -58,19 +58,10 @@ namespace serial_test
         private void button_connect_Click(object sender, EventArgs e)
         {
             com_info = textBox_com.Text;
-
-                _serialPort = new SerialPort(
-                com_info,
-                9600,
-                Parity.None,
-                8,
-                StopBits.One); // None?
-            _serialPort.Handshake = Handshake.None;
-            
-            _serialPort.Open();
+            if (!_serialPort.IsOpen)
+                _serialPort.Open();
 
             checkConnection(button_connect, _serialPort); // for color
-
 
             //Setup Timer
             tm = new System.Windows.Forms.Timer();
@@ -81,15 +72,16 @@ namespace serial_test
         }
         void tm_Tick(object sender, EventArgs e)
         {
-            if (!_serialPort.IsOpen)
-                _serialPort.Open();
-
-            button_read_Click(sender, e);
+            if (_serialPort.IsOpen)
+            {
+                button_read_Click(sender, e);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            _serialPort.Close();
+            if (_serialPort.IsOpen)
+                _serialPort.Close();
 
             checkConnection(button_connect, _serialPort);
         }
@@ -100,16 +92,15 @@ namespace serial_test
             string data = _serialPort.ReadExisting();//_serialPort.ReadExisting();
             //_serialPort.Read(RECV_DATA_BUFFER, 0, 12);
             if (data != "")
-            {
-                this.BeginInvoke(new SetTextDeleg(si_DataReceived), new object[] { data });
-            }
+                {
+                    this.BeginInvoke(new SetTextDeleg(si_DataReceived), new object[] { data });
+                }
         }
         private void button_read_Click(object sender, EventArgs e)
         {
-                
-            _serialPort.Write("R");
+                _serialPort.Write("R");
 
-            _serialPort.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceiver);
+                _serialPort.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceiver);
             // reading data event
 
                 //textBox_data.Text = received_data;
@@ -169,24 +160,16 @@ namespace serial_test
         }
         private void button_connect_weight_Click(object sender, EventArgs e)
         {
-            com_info = textBox_com_weight.Text;
-
-            _serialPort_weight = new SerialPort(
-                com_info,
-                9600,
-                Parity.None,
-                8,
-                StopBits.One);
-            _serialPort_weight.Handshake = Handshake.None;
-
-            _serialPort_weight.Open(); // try catch gelecek
+            if (!_serialPort_weight.IsOpen)
+                _serialPort_weight.Open();
 
             checkConnection(button_connect_weight, _serialPort_weight); // for color
         }
 
         private void button_disconnect_weight_Click(object sender, EventArgs e)
         {
-            _serialPort_weight.Close();
+            if (_serialPort_weight.IsOpen)
+                _serialPort_weight.Close();
 
             checkConnection(button_connect_weight, _serialPort_weight);
         }
@@ -313,7 +296,7 @@ namespace serial_test
             {
                 if (off_details_flag)
                 {
-                    off_details_flag = false; // ture ?
+                    off_details_flag = false;
                     textBox_commget.ForeColor = Color.LightGreen;
 
                     groupBox1.Visible = default_details_bool[0];
@@ -331,7 +314,6 @@ namespace serial_test
                     groupBox5.Location = defaults_details_point[5];
                     this.Size = default_details_size[2];
                     textBox_commget.Size = default_details_size[3];
-
                 }
                 else
                 {
@@ -347,9 +329,32 @@ namespace serial_test
         public bool[] default_details_bool = new bool[5];
         public Point[] defaults_details_point = new Point[7];
         public Size[] default_details_size = new Size[4];
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            // SERIAL_PORTS
+            _serialPort = new SerialPort(
+            com_info,
+            9600,
+            Parity.None,
+            8,
+            StopBits.One); // None?
+            _serialPort.Handshake = Handshake.None;
+            // SER1
+
+            com_info = textBox_com_weight.Text;
+            _serialPort_weight = new SerialPort(
+                com_info,
+                9600,
+                Parity.None,
+                8,
+                StopBits.One);
+            _serialPort_weight.Handshake = Handshake.None;
+            // SER2
+            // SERIAL_PORTS
+
+            // COMMAND_BAR
             default_details_bool[0] = groupBox1.Visible;
             default_details_bool[1] = groupBox4.Visible;
             default_details_bool[2] = button_read.Visible;
@@ -365,6 +370,7 @@ namespace serial_test
             defaults_details_point[5] = groupBox5.Location;
             default_details_size[2] = this.Size;
             default_details_size[3] = textBox_commget.Size;
+            // COMMAND_BAR
         }
     }
 }

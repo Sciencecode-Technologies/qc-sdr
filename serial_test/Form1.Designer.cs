@@ -146,7 +146,7 @@
             this.button_reset.Name = "button_reset";
             this.button_reset.Size = new System.Drawing.Size(54, 36);
             this.button_reset.TabIndex = 3;
-            this.button_reset.Text = "Reset";
+            this.button_reset.Text = "Sıfırla";
             this.button_reset.UseVisualStyleBackColor = false;
             this.button_reset.Click += new System.EventHandler(this.button_reset_Click);
             // 

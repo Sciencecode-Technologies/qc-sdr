@@ -47,8 +47,8 @@
             this.button_disconnect_weight = new System.Windows.Forms.Button();
             this.button_connect_weight = new System.Windows.Forms.Button();
             this.textBox_com_weight = new System.Windows.Forms.TextBox();
-            this.button_read_weight = new System.Windows.Forms.Button();
             this.textBox_data_weight = new System.Windows.Forms.TextBox();
+            this.button_read_weight = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.textBox_net_weight = new System.Windows.Forms.TextBox();
             this.button_meter_copy = new System.Windows.Forms.Button();
@@ -283,18 +283,6 @@
             this.textBox_com_weight.Text = "COM5";
             this.textBox_com_weight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button_read_weight
-            // 
-            this.button_read_weight.BackColor = System.Drawing.SystemColors.Control;
-            this.button_read_weight.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button_read_weight.Location = new System.Drawing.Point(93, 147);
-            this.button_read_weight.Name = "button_read_weight";
-            this.button_read_weight.Size = new System.Drawing.Size(195, 29);
-            this.button_read_weight.TabIndex = 4;
-            this.button_read_weight.Text = "Oku";
-            this.button_read_weight.UseVisualStyleBackColor = false;
-            this.button_read_weight.Click += new System.EventHandler(this.button_read_weight_Click);
-            // 
             // textBox_data_weight
             // 
             this.textBox_data_weight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(111)))), ((int)(((byte)(255)))));
@@ -306,6 +294,18 @@
             this.textBox_data_weight.Size = new System.Drawing.Size(195, 33);
             this.textBox_data_weight.TabIndex = 0;
             this.textBox_data_weight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button_read_weight
+            // 
+            this.button_read_weight.BackColor = System.Drawing.SystemColors.Control;
+            this.button_read_weight.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button_read_weight.Location = new System.Drawing.Point(93, 147);
+            this.button_read_weight.Name = "button_read_weight";
+            this.button_read_weight.Size = new System.Drawing.Size(195, 29);
+            this.button_read_weight.TabIndex = 4;
+            this.button_read_weight.Text = "Oku";
+            this.button_read_weight.UseVisualStyleBackColor = false;
+            this.button_read_weight.Click += new System.EventHandler(this.button_read_weight_Click);
             // 
             // groupBox5
             // 
@@ -540,6 +540,7 @@
             this.Name = "Form1";
             this.Opacity = 0.99D;
             this.Text = "QC-SDR";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

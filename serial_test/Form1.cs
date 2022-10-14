@@ -285,37 +285,24 @@ namespace serial_test
                     groupBox1.Visible = false;
                     groupBox4.Visible = false;
 
-                    defaults[2] = button_read.Visible;
                     button_read.Visible = false;
-                    defaults[3] = button_reset.Visible = false;
                     button_reset.Visible = false;
-                    defaults[4] = button_read_weight.Visible = false;
                     button_read_weight.Visible = false;
 
-                    defaults[5] = textBox_data.Location;
                     textBox_data.Location = new Point(6, textBox_data.Location.Y);
-                    defaults[6] = button_save.Location;
                     button_save.Location = new Point(6, button_save.Location.Y);
 
-                    defaults[7] = textBox_data_weight.Location;
                     textBox_data_weight.Location = new Point(6, textBox_data_weight.Location.Y);
-                    defaults[8] = button_rolik.Location;
                     button_rolik.Location = new Point(6, button_rolik.Location.Y);
-                    defaults[9] = button_weight.Location;
                     button_weight.Location = new Point(6, button_weight.Location.Y);
 
-                    defaults[10] = groupBox2.Size;
                     groupBox2.Size = new Size(groupBox2.Size.Width - groupBox1.Size.Width, groupBox2.Size.Height);
-                    defaults[11] = groupBox3.Size;
                     groupBox3.Size = new Size(groupBox3.Size.Width - groupBox1.Size.Width, groupBox3.Size.Height);
 
-                    defaults[12] = groupBox5.Location;
                     groupBox5.Location = new Point(groupBox5.Location.X - groupBox3.Location.X - 70, groupBox5.Location.Y);
 
-                    defaults[13] = this.Size;
                     this.Size = new Size(this.Size.Width - 81, this.Size.Height);
 
-                    defaults[14] = textBox_commget.Size;
                     textBox_commget.Size = new Size(textBox_commget.Size.Width - 81, textBox_commget.Size.Height);
                 }
                 else
@@ -326,7 +313,25 @@ namespace serial_test
             {
                 if (off_details_flag)
                 {
-                    off_details_flag = true;
+                    off_details_flag = false; // ture ?
+                    textBox_commget.ForeColor = Color.LightGreen;
+
+                    groupBox1.Visible = default_details_bool[0];
+                    groupBox4.Visible = default_details_bool[1];
+                    button_read.Visible = default_details_bool[2];
+                    button_reset.Visible = default_details_bool[3];
+                    button_read_weight.Visible = default_details_bool[4];
+                    textBox_data.Location = defaults_details_point[0];
+                    button_save.Location = defaults_details_point[1];
+                    textBox_data_weight.Location = defaults_details_point[2];
+                    button_rolik.Location = defaults_details_point[3];
+                    button_weight.Location = defaults_details_point[4];
+                    groupBox2.Size = default_details_size[0];
+                    groupBox3.Size = default_details_size[1];
+                    groupBox5.Location = defaults_details_point[5];
+                    this.Size = default_details_size[2];
+                    textBox_commget.Size = default_details_size[3];
+
                 }
                 else
                 {
@@ -337,6 +342,29 @@ namespace serial_test
             {
                 textBox_commget.ForeColor = Color.Red;
             }
+        }
+
+        public bool[] default_details_bool = new bool[5];
+        public Point[] defaults_details_point = new Point[7];
+        public Size[] default_details_size = new Size[4];
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+            default_details_bool[0] = groupBox1.Visible;
+            default_details_bool[1] = groupBox4.Visible;
+            default_details_bool[2] = button_read.Visible;
+            default_details_bool[3] = button_reset.Visible;
+            default_details_bool[4] = button_read_weight.Visible;
+            defaults_details_point[0] = textBox_data.Location;
+            defaults_details_point[1] = button_save.Location;
+            defaults_details_point[2] = textBox_data_weight.Location;
+            defaults_details_point[3] = button_rolik.Location;
+            defaults_details_point[4] = button_weight.Location;
+            default_details_size[0] = groupBox2.Size;
+            default_details_size[1] = groupBox3.Size;
+            defaults_details_point[5] = groupBox5.Location;
+            default_details_size[2] = this.Size;
+            default_details_size[3] = textBox_commget.Size;
         }
     }
 }

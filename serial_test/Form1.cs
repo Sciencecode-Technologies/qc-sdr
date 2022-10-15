@@ -205,20 +205,21 @@ namespace serial_test
         }
         private void button5_Click(object sender, EventArgs e)
         {
-            textBox_result.Text = formula(
+            /*textBox_result.Text = formula(
                 double.Parse(textBox_unitg.Text),
                 double.Parse(textBox_totalw.Text),
                 double.Parse(textBox_meter.Text),
-                double.Parse(textBox_rolik.Text)).ToString();
+                double.Parse(textBox_rolik.Text)).ToString();*/
 
+            textBox_unitg.Text = (double.Parse(textBox_totalw.Text) / double.Parse(textBox_meter.Text)).ToString();
             textBox_net_weight.Text = (double.Parse(textBox_totalw.Text) - double.Parse(textBox_rolik.Text)).ToString();
 
-            csvfw.add_row(
+            /*csvfw.add_row(
                 textBox_rolik.Text,
                 textBox_totalw.Text,
                 textBox_unitg.Text,
                 textBox_meter.Text,
-                textBox_result.Text);
+                textBox_result.Text);*/
         }
 
         private void button_copy_Click_1(object sender, EventArgs e)

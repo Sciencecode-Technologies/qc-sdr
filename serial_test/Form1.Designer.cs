@@ -405,7 +405,7 @@
             // 
             // textBox_unitg
             // 
-            this.textBox_unitg.BackColor = System.Drawing.SystemColors.Info;
+            this.textBox_unitg.BackColor = System.Drawing.SystemColors.Window;
             this.textBox_unitg.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox_unitg.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.textBox_unitg.Location = new System.Drawing.Point(11, 94);
@@ -421,12 +421,13 @@
             this.textBox_result.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox_result.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.textBox_result.ForeColor = System.Drawing.Color.Black;
-            this.textBox_result.Location = new System.Drawing.Point(234, 79);
+            this.textBox_result.Location = new System.Drawing.Point(342, 79);
             this.textBox_result.Name = "textBox_result";
-            this.textBox_result.Size = new System.Drawing.Size(128, 31);
+            this.textBox_result.Size = new System.Drawing.Size(20, 31);
             this.textBox_result.TabIndex = 1;
             this.textBox_result.Text = "0";
             this.textBox_result.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_result.Visible = false;
             // 
             // textBox_meter
             // 
@@ -466,9 +467,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label5.Location = new System.Drawing.Point(17, 70);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 17);
+            this.label5.Size = new System.Drawing.Size(101, 17);
             this.label5.TabIndex = 0;
-            this.label5.Text = "Birim Gram";
+            this.label5.Text = "Birim Gramaj";
             // 
             // textBox_rolik
             // 

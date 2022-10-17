@@ -91,27 +91,30 @@ namespace serial_test
             Thread.Sleep(100);
             string data = _serialPort.ReadExisting();//_serialPort.ReadExisting();
             //_serialPort.Read(RECV_DATA_BUFFER, 0, 12);
-            if (data != "")
+            if (read_meter_flag)
+            {
+                if (data != "")
                 {
                     this.BeginInvoke(new SetTextDeleg(si_DataReceived), new object[] { data });
                 }
+            }
         }
+        private bool read_meter_flag = false;
         private void button_read_Click(object sender, EventArgs e)
         {
+            if (!read_meter_flag)
+            {
+                read_meter_flag = true;
                 _serialPort.Write("R");
-
                 _serialPort.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceiver);
-            // reading data event
-
-                //textBox_data.Text = received_data;
-         
-            //textBox_data.Text =  System.Text.Encoding.Default.GetString(RECV_DATA_BUFFER);
+                button_read.Text = "Durdur";
+            }
+            else
+            {
+                read_meter_flag = false;
+                button_read.Text = "Oku";
+            }
         }
-
-        /*private void button_clear_Click(object sender, EventArgs e)
-        {
-            textBox_data.Text = "";
-        }*/
 
         private void button_reset_Click(object sender, EventArgs e)
         {
@@ -153,10 +156,14 @@ namespace serial_test
         }
         private void w_sp_DataReceiver(object sender, SerialDataReceivedEventArgs e)
         {
-            Thread.Sleep(1500);
-            string w_data = _serialPort_weight.ReadExisting();//_serialPort.ReadExisting();
-            //_serialPort.Read(RECV_DATA_BUFFER, 0, 12);
-            this.BeginInvoke(new SetTextDeleg(w_si_DataReceived), new object[] { w_data });
+            if (read_weight_flag)
+            {
+                Thread.Sleep(1500);
+                string w_data = _serialPort_weight.ReadExisting();//_serialPort.ReadExisting();
+                //_serialPort.Read(RECV_DATA_BUFFER, 0, 12);
+            
+                this.BeginInvoke(new SetTextDeleg(w_si_DataReceived), new object[] { w_data });
+            }
         }
         private void button_connect_weight_Click(object sender, EventArgs e)
         {
@@ -178,18 +185,27 @@ namespace serial_test
         {
             System.Windows.Forms.Clipboard.SetText(textBox_data_weight.Text);
         }
-
+        private bool read_weight_flag = false;
         private void button_read_weight_Click(object sender, EventArgs e)
         {
-
-            if (_serialPort_weight.IsOpen != true)
+            if (!read_weight_flag)
             {
-                _serialPort_weight.Open();
+                read_weight_flag = true;
+
+                if (_serialPort_weight.IsOpen != true)
+                {
+                    _serialPort_weight.Open();
+                }
+
+                textBox_data_weight.Text = "";
+                button_read_weight.Text = "Durdur";
+                _serialPort_weight.DataReceived += new SerialDataReceivedEventHandler(w_sp_DataReceiver);
             }
-
-            textBox_data_weight.Text = "";
-
-            _serialPort_weight.DataReceived += new SerialDataReceivedEventHandler(w_sp_DataReceiver);
+            else
+            {
+                read_weight_flag = false;
+                button_read_weight.Text = "Oku";
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -214,12 +230,14 @@ namespace serial_test
             textBox_unitg.Text = Math.Round(double.Parse(textBox_totalw.Text) / double.Parse(textBox_meter.Text), 3).ToString();
             textBox_net_weight.Text = (double.Parse(textBox_totalw.Text) - double.Parse(textBox_rolik.Text)).ToString();
 
-            /*csvfw.add_row(
+            
+            csvfw.add_row(
                 textBox_rolik.Text,
                 textBox_totalw.Text,
                 textBox_unitg.Text,
                 textBox_meter.Text,
-                textBox_result.Text);*/
+                textBox_result.Text);
+            // csv
         }
 
         private void button_copy_Click_1(object sender, EventArgs e)

@@ -314,7 +314,6 @@
             this.groupBox5.Controls.Add(this.button_net_weight_copy);
             this.groupBox5.Controls.Add(this.button_clear);
             this.groupBox5.Controls.Add(this.button5);
-            this.groupBox5.Controls.Add(this.button_copy);
             this.groupBox5.Controls.Add(this.textBox_unitg);
             this.groupBox5.Controls.Add(this.textBox_result);
             this.groupBox5.Controls.Add(this.textBox_meter);
@@ -346,10 +345,10 @@
             // button_meter_copy
             // 
             this.button_meter_copy.BackColor = System.Drawing.SystemColors.Control;
-            this.button_meter_copy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button_meter_copy.Location = new System.Drawing.Point(184, 173);
+            this.button_meter_copy.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
+            this.button_meter_copy.Location = new System.Drawing.Point(184, 201);
             this.button_meter_copy.Name = "button_meter_copy";
-            this.button_meter_copy.Size = new System.Drawing.Size(178, 54);
+            this.button_meter_copy.Size = new System.Drawing.Size(178, 80);
             this.button_meter_copy.TabIndex = 8;
             this.button_meter_copy.Text = "Metre Kopyala";
             this.button_meter_copy.UseVisualStyleBackColor = false;
@@ -358,10 +357,10 @@
             // button_net_weight_copy
             // 
             this.button_net_weight_copy.BackColor = System.Drawing.SystemColors.Control;
-            this.button_net_weight_copy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button_net_weight_copy.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
             this.button_net_weight_copy.Location = new System.Drawing.Point(184, 116);
             this.button_net_weight_copy.Name = "button_net_weight_copy";
-            this.button_net_weight_copy.Size = new System.Drawing.Size(178, 54);
+            this.button_net_weight_copy.Size = new System.Drawing.Size(178, 79);
             this.button_net_weight_copy.TabIndex = 7;
             this.button_net_weight_copy.Text = "Net Ağırlık Kopyala";
             this.button_net_weight_copy.UseVisualStyleBackColor = false;
@@ -370,7 +369,7 @@
             // button_clear
             // 
             this.button_clear.BackColor = System.Drawing.SystemColors.Control;
-            this.button_clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button_clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.button_clear.Location = new System.Drawing.Point(6, 287);
             this.button_clear.Name = "button_clear";
             this.button_clear.Size = new System.Drawing.Size(356, 52);
@@ -382,7 +381,7 @@
             // button5
             // 
             this.button5.BackColor = System.Drawing.SystemColors.Control;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.button5.Location = new System.Drawing.Point(6, 116);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(172, 165);
@@ -395,12 +394,13 @@
             // 
             this.button_copy.BackColor = System.Drawing.SystemColors.Control;
             this.button_copy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button_copy.Location = new System.Drawing.Point(184, 230);
+            this.button_copy.Location = new System.Drawing.Point(680, 242);
             this.button_copy.Name = "button_copy";
             this.button_copy.Size = new System.Drawing.Size(178, 51);
             this.button_copy.TabIndex = 4;
             this.button_copy.Text = "Sonuç Kopyala";
             this.button_copy.UseVisualStyleBackColor = false;
+            this.button_copy.Visible = false;
             this.button_copy.Click += new System.EventHandler(this.button_copy_Click_1);
             // 
             // textBox_unitg
@@ -534,6 +534,7 @@
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.button_copy);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

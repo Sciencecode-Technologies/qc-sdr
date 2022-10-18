@@ -274,6 +274,7 @@ namespace serial_test
             System.Windows.Forms.Clipboard.SetText(textBox_meter.Text);
         }
         private bool off_details_flag = false;
+        private bool csv_dir = false;
         private void textBox_commget_TextChanged(object sender, EventArgs e)
         {
             if (textBox_commget.Text == "off_details")
@@ -338,7 +339,16 @@ namespace serial_test
                 {
                     textBox_commget.ForeColor = Color.LightPink;
                 }
-            }
+            }/*else if (textBox_commget.Text.Split(' ')[0] == "change_csv_dir")
+            {
+                if (!csv_dir)
+                {
+                    csv_dir = true;
+                    textBox_commget.ForeColor = Color.LightGreen;
+
+                    csvfw.folder_path = textBox_commget.Text.Split(' ')[1];
+                }
+            }*/
             else
             {
                 textBox_commget.ForeColor = Color.Red;

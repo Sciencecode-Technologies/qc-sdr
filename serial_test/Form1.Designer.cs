@@ -55,7 +55,6 @@
             this.button_net_weight_copy = new System.Windows.Forms.Button();
             this.button_clear = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button_copy = new System.Windows.Forms.Button();
             this.textBox_unitg = new System.Windows.Forms.TextBox();
             this.textBox_result = new System.Windows.Forms.TextBox();
             this.textBox_meter = new System.Windows.Forms.TextBox();
@@ -66,6 +65,7 @@
             this.label_meter = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.button_copy = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.textBox_commget = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
@@ -172,6 +172,7 @@
             this.textBox_data.Size = new System.Drawing.Size(195, 35);
             this.textBox_data.TabIndex = 1;
             this.textBox_data.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_data.TextChanged += new System.EventHandler(this.textBox_data_TextChanged);
             // 
             // button_read
             // 
@@ -390,19 +391,6 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button_copy
-            // 
-            this.button_copy.BackColor = System.Drawing.SystemColors.Control;
-            this.button_copy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.button_copy.Location = new System.Drawing.Point(680, 242);
-            this.button_copy.Name = "button_copy";
-            this.button_copy.Size = new System.Drawing.Size(178, 51);
-            this.button_copy.TabIndex = 4;
-            this.button_copy.Text = "Sonuç Kopyala";
-            this.button_copy.UseVisualStyleBackColor = false;
-            this.button_copy.Visible = false;
-            this.button_copy.Click += new System.EventHandler(this.button_copy_Click_1);
-            // 
             // textBox_unitg
             // 
             this.textBox_unitg.BackColor = System.Drawing.SystemColors.Window;
@@ -511,6 +499,19 @@
             this.label2.Size = new System.Drawing.Size(94, 17);
             this.label2.TabIndex = 0;
             this.label2.Text = "Rolik Ağırlık";
+            // 
+            // button_copy
+            // 
+            this.button_copy.BackColor = System.Drawing.SystemColors.Control;
+            this.button_copy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button_copy.Location = new System.Drawing.Point(680, 242);
+            this.button_copy.Name = "button_copy";
+            this.button_copy.Size = new System.Drawing.Size(178, 51);
+            this.button_copy.TabIndex = 4;
+            this.button_copy.Text = "Sonuç Kopyala";
+            this.button_copy.UseVisualStyleBackColor = false;
+            this.button_copy.Visible = false;
+            this.button_copy.Click += new System.EventHandler(this.button_copy_Click_1);
             // 
             // textBox_commget
             // 

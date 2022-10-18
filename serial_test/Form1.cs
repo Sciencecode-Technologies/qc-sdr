@@ -20,7 +20,8 @@ namespace serial_test
 {
     public partial class Form1 : Form
     {
-        public string com_info = "COM5";
+        public string com_info = "COM1";
+        public string weight_com_info = "COM1";
         public string m_data;
         public string received_data;
         
@@ -57,7 +58,13 @@ namespace serial_test
         }
         private void button_connect_Click(object sender, EventArgs e)
         {
-            com_info = textBox_com.Text;
+            _serialPort = new SerialPort(
+            textBox_com.Text,
+            9600,
+            Parity.None,
+            8,
+            StopBits.One); // None?
+            _serialPort.Handshake = Handshake.None;
             if (!_serialPort.IsOpen)
                 _serialPort.Open();
 
@@ -85,7 +92,9 @@ namespace serial_test
 
             checkConnection(button_connect, _serialPort);
         }
-        private void si_DataReceived(string data) { textBox_data.Text = Math.Round(float.Parse(data.Trim(), CultureInfo.InvariantCulture.NumberFormat),3).ToString(); }
+        private void si_DataReceived(string data) { 
+            textBox_data.Text = Math.Round(float.Parse(data.Trim(), CultureInfo.InvariantCulture.NumberFormat),3).ToString(); 
+        }
         private void sp_DataReceiver(object sender, SerialDataReceivedEventArgs e)
         {
             Thread.Sleep(100);
@@ -167,6 +176,13 @@ namespace serial_test
         }
         private void button_connect_weight_Click(object sender, EventArgs e)
         {
+            _serialPort_weight = new SerialPort(
+                textBox_com_weight.Text,
+                9600,
+                Parity.None,
+                8,
+                StopBits.One);
+            _serialPort_weight.Handshake = Handshake.None;
             if (!_serialPort_weight.IsOpen)
                 _serialPort_weight.Open();
 
@@ -400,6 +416,11 @@ namespace serial_test
             default_details_size[2] = this.Size;
             default_details_size[3] = textBox_commget.Size;
             // COMMAND_BAR
+        }
+
+        private void textBox_data_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -20,12 +20,15 @@ namespace serial_test
 {
     public partial class Form1 : Form
     {
-        public string com_info;
+        public string com_info = "COM1";
+        public string weight_com_info = "COM1";
         public string m_data;
         public string received_data;
+        
+        public System.Windows.Forms.Timer tm;
 
         csv_file_writer csvfw = new csv_file_writer(
-            @"\\192.168.0.12\Data\Bilgiislem\Suha\.service_folder\qc-sdr",
+            @".", //\\192.168.0.12\Data\Bilgiislem\Suha\.service_folder\qc-sdr
             "qcsdr_data.csv",
             System.Net.Dns.GetHostName());
 
@@ -55,55 +58,72 @@ namespace serial_test
         }
         private void button_connect_Click(object sender, EventArgs e)
         {
-            com_info = textBox_com.Text;
-
-                _serialPort = new SerialPort(
-                com_info,
-                9600,
-                Parity.None,
-                8,
-                StopBits.One); // None?
+            _serialPort = new SerialPort(
+            textBox_com.Text,
+            9600,
+            Parity.None,
+            8,
+            StopBits.One); // None?
             _serialPort.Handshake = Handshake.None;
-            
-            _serialPort.Open();
+            if (!_serialPort.IsOpen)
+                _serialPort.Open();
 
             checkConnection(button_connect, _serialPort); // for color
+
+            //Setup Timer
+            tm = new System.Windows.Forms.Timer();
+            tm.Tick += new EventHandler(tm_Tick);
+            tm.Interval = 1000; //in ms
+            tm.Enabled = true;  //Start timer
+
+        }
+        void tm_Tick(object sender, EventArgs e)
+        {
+            if (_serialPort.IsOpen)
+            {
+                button_read_Click(sender, e);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            _serialPort.Close();
+            if (_serialPort.IsOpen)
+                _serialPort.Close();
 
             checkConnection(button_connect, _serialPort);
         }
-        private void si_DataReceived(string data) { textBox_data.Text = Math.Round(float.Parse(data.Trim(), CultureInfo.InvariantCulture.NumberFormat),3).ToString(); }
+        private void si_DataReceived(string data) { 
+            textBox_data.Text = Math.Round(float.Parse(data.Trim(), CultureInfo.InvariantCulture.NumberFormat),3).ToString(); 
+        }
         private void sp_DataReceiver(object sender, SerialDataReceivedEventArgs e)
         {
             Thread.Sleep(100);
             string data = _serialPort.ReadExisting();//_serialPort.ReadExisting();
             //_serialPort.Read(RECV_DATA_BUFFER, 0, 12);
-            if (data != "")
+            if (read_meter_flag)
             {
-                this.BeginInvoke(new SetTextDeleg(si_DataReceived), new object[] { data });
+                if (data != "")
+                {
+                    this.BeginInvoke(new SetTextDeleg(si_DataReceived), new object[] { data });
+                }
             }
         }
+        private bool read_meter_flag = false;
         private void button_read_Click(object sender, EventArgs e)
         {
-                
-            _serialPort.Write("R");
-
-            _serialPort.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceiver);
-            // reading data event
-
-                //textBox_data.Text = received_data;
-         
-            //textBox_data.Text =  System.Text.Encoding.Default.GetString(RECV_DATA_BUFFER);
+            if (!read_meter_flag)
+            {
+                read_meter_flag = true;
+                _serialPort.Write("R");
+                _serialPort.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceiver);
+                button_read.Text = "Durdur";
+            }
+            else
+            {
+                read_meter_flag = false;
+                button_read.Text = "Oku";
+            }
         }
-
-        /*private void button_clear_Click(object sender, EventArgs e)
-        {
-            textBox_data.Text = "";
-        }*/
 
         private void button_reset_Click(object sender, EventArgs e)
         {
@@ -145,31 +165,34 @@ namespace serial_test
         }
         private void w_sp_DataReceiver(object sender, SerialDataReceivedEventArgs e)
         {
-            Thread.Sleep(1500);
-            string w_data = _serialPort_weight.ReadExisting();//_serialPort.ReadExisting();
-            //_serialPort.Read(RECV_DATA_BUFFER, 0, 12);
-            this.BeginInvoke(new SetTextDeleg(w_si_DataReceived), new object[] { w_data });
+            if (read_weight_flag)
+            {
+                Thread.Sleep(1500);
+                string w_data = _serialPort_weight.ReadExisting();//_serialPort.ReadExisting();
+                //_serialPort.Read(RECV_DATA_BUFFER, 0, 12);
+            
+                this.BeginInvoke(new SetTextDeleg(w_si_DataReceived), new object[] { w_data });
+            }
         }
         private void button_connect_weight_Click(object sender, EventArgs e)
         {
-            com_info = textBox_com_weight.Text;
-
             _serialPort_weight = new SerialPort(
-                com_info,
+                textBox_com_weight.Text,
                 9600,
                 Parity.None,
                 8,
                 StopBits.One);
             _serialPort_weight.Handshake = Handshake.None;
-
-            _serialPort_weight.Open(); // try catch gelecek
+            if (!_serialPort_weight.IsOpen)
+                _serialPort_weight.Open();
 
             checkConnection(button_connect_weight, _serialPort_weight); // for color
         }
 
         private void button_disconnect_weight_Click(object sender, EventArgs e)
         {
-            _serialPort_weight.Close();
+            if (_serialPort_weight.IsOpen)
+                _serialPort_weight.Close();
 
             checkConnection(button_connect_weight, _serialPort_weight);
         }
@@ -178,18 +201,27 @@ namespace serial_test
         {
             System.Windows.Forms.Clipboard.SetText(textBox_data_weight.Text);
         }
-
+        private bool read_weight_flag = false;
         private void button_read_weight_Click(object sender, EventArgs e)
         {
-
-            if (_serialPort_weight.IsOpen != true)
+            if (!read_weight_flag)
             {
-                _serialPort_weight.Open();
+                read_weight_flag = true;
+
+                if (_serialPort_weight.IsOpen != true)
+                {
+                    _serialPort_weight.Open();
+                }
+
+                textBox_data_weight.Text = "";
+                button_read_weight.Text = "Durdur";
+                _serialPort_weight.DataReceived += new SerialDataReceivedEventHandler(w_sp_DataReceiver);
             }
-
-            textBox_data_weight.Text = "";
-
-            _serialPort_weight.DataReceived += new SerialDataReceivedEventHandler(w_sp_DataReceiver);
+            else
+            {
+                read_weight_flag = false;
+                button_read_weight.Text = "Oku";
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -205,18 +237,23 @@ namespace serial_test
         }
         private void button5_Click(object sender, EventArgs e)
         {
-            textBox_result.Text = formula(
+            /*textBox_result.Text = formula(
                 double.Parse(textBox_unitg.Text),
                 double.Parse(textBox_totalw.Text),
                 double.Parse(textBox_meter.Text),
-                double.Parse(textBox_rolik.Text)).ToString();
+                double.Parse(textBox_rolik.Text)).ToString();*/
 
+            textBox_unitg.Text = Math.Round(double.Parse(textBox_totalw.Text) / double.Parse(textBox_meter.Text), 3).ToString();
+            textBox_net_weight.Text = (double.Parse(textBox_totalw.Text) - double.Parse(textBox_rolik.Text)).ToString();
+
+            
             csvfw.add_row(
                 textBox_rolik.Text,
                 textBox_totalw.Text,
                 textBox_unitg.Text,
                 textBox_meter.Text,
                 textBox_result.Text);
+            // csv
         }
 
         private void button_copy_Click_1(object sender, EventArgs e)
@@ -241,6 +278,148 @@ namespace serial_test
             textBox_meter.Text = "0";
             textBox_totalw.Text = "0";
             textBox_rolik.Text = "0";
+        }
+
+        private void button_net_weight_copy_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Clipboard.SetText((double.Parse(textBox_totalw.Text) - double.Parse(textBox_rolik.Text)).ToString());
+        }
+
+        private void button_meter_copy_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Clipboard.SetText(textBox_meter.Text);
+        }
+        private bool off_details_flag = false;
+        private bool csv_dir = false;
+        private void textBox_commget_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox_commget.Text == "off_details")
+            {
+                if (!off_details_flag)
+                {
+                    off_details_flag = true;
+                    textBox_commget.ForeColor = Color.LightGreen;
+                    // worked
+
+                    groupBox1.Visible = false;
+                    groupBox4.Visible = false;
+
+                    button_read.Visible = false;
+                    button_reset.Visible = false;
+                    button_read_weight.Visible = false;
+
+                    textBox_data.Location = new Point(6, textBox_data.Location.Y);
+                    button_save.Location = new Point(6, button_save.Location.Y);
+
+                    textBox_data_weight.Location = new Point(6, textBox_data_weight.Location.Y);
+                    button_rolik.Location = new Point(6, button_rolik.Location.Y);
+                    button_weight.Location = new Point(6, button_weight.Location.Y);
+
+                    groupBox2.Size = new Size(groupBox2.Size.Width - groupBox1.Size.Width, groupBox2.Size.Height);
+                    groupBox3.Size = new Size(groupBox3.Size.Width - groupBox1.Size.Width, groupBox3.Size.Height);
+
+                    groupBox5.Location = new Point(groupBox5.Location.X - groupBox3.Location.X - 70, groupBox5.Location.Y);
+
+                    this.Size = new Size(this.Size.Width - 81, this.Size.Height);
+
+                    textBox_commget.Size = new Size(textBox_commget.Size.Width - 81, textBox_commget.Size.Height);
+                }
+                else
+                {
+                    textBox_commget.ForeColor = Color.LightPink;
+                }
+            }else if (textBox_commget.Text == "on_details")
+            {
+                if (off_details_flag)
+                {
+                    off_details_flag = false;
+                    textBox_commget.ForeColor = Color.LightGreen;
+
+                    groupBox1.Visible = default_details_bool[0];
+                    groupBox4.Visible = default_details_bool[1];
+                    button_read.Visible = default_details_bool[2];
+                    button_reset.Visible = default_details_bool[3];
+                    button_read_weight.Visible = default_details_bool[4];
+                    textBox_data.Location = defaults_details_point[0];
+                    button_save.Location = defaults_details_point[1];
+                    textBox_data_weight.Location = defaults_details_point[2];
+                    button_rolik.Location = defaults_details_point[3];
+                    button_weight.Location = defaults_details_point[4];
+                    groupBox2.Size = default_details_size[0];
+                    groupBox3.Size = default_details_size[1];
+                    groupBox5.Location = defaults_details_point[5];
+                    this.Size = default_details_size[2];
+                    textBox_commget.Size = default_details_size[3];
+                }
+                else
+                {
+                    textBox_commget.ForeColor = Color.LightPink;
+                }
+            }/*else if (textBox_commget.Text.Split(' ')[0] == "change_csv_dir")
+            {
+                if (!csv_dir)
+                {
+                    csv_dir = true;
+                    textBox_commget.ForeColor = Color.LightGreen;
+
+                    csvfw.folder_path = textBox_commget.Text.Split(' ')[1];
+                }
+            }*/
+            else
+            {
+                textBox_commget.ForeColor = Color.Red;
+            }
+        }
+
+        public bool[] default_details_bool = new bool[5];
+        public Point[] defaults_details_point = new Point[7];
+        public Size[] default_details_size = new Size[4];
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+            // SERIAL_PORTS
+            _serialPort = new SerialPort(
+            com_info,
+            9600,
+            Parity.None,
+            8,
+            StopBits.One); // None?
+            _serialPort.Handshake = Handshake.None;
+            // SER1
+
+            com_info = textBox_com_weight.Text;
+            _serialPort_weight = new SerialPort(
+                com_info,
+                9600,
+                Parity.None,
+                8,
+                StopBits.One);
+            _serialPort_weight.Handshake = Handshake.None;
+            // SER2
+            // SERIAL_PORTS
+
+            // COMMAND_BAR
+            default_details_bool[0] = groupBox1.Visible;
+            default_details_bool[1] = groupBox4.Visible;
+            default_details_bool[2] = button_read.Visible;
+            default_details_bool[3] = button_reset.Visible;
+            default_details_bool[4] = button_read_weight.Visible;
+            defaults_details_point[0] = textBox_data.Location;
+            defaults_details_point[1] = button_save.Location;
+            defaults_details_point[2] = textBox_data_weight.Location;
+            defaults_details_point[3] = button_rolik.Location;
+            defaults_details_point[4] = button_weight.Location;
+            default_details_size[0] = groupBox2.Size;
+            default_details_size[1] = groupBox3.Size;
+            defaults_details_point[5] = groupBox5.Location;
+            default_details_size[2] = this.Size;
+            default_details_size[3] = textBox_commget.Size;
+            // COMMAND_BAR
+        }
+
+        private void textBox_data_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

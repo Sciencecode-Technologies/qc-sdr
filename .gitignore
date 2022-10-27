@@ -351,6 +351,8 @@ MigrationBackup/
 
 # exec
 *.exe
+serial_test.exe
 
 # csv
 *.csv
+qcsdr_data.csv

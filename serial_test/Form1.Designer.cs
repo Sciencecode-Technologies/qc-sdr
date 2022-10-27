@@ -83,7 +83,7 @@
             this.textBox_com.Name = "textBox_com";
             this.textBox_com.Size = new System.Drawing.Size(69, 23);
             this.textBox_com.TabIndex = 1;
-            this.textBox_com.Text = "COM5";
+            this.textBox_com.Text = "COM2";
             this.textBox_com.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox1
@@ -281,7 +281,7 @@
             this.textBox_com_weight.Name = "textBox_com_weight";
             this.textBox_com_weight.Size = new System.Drawing.Size(69, 23);
             this.textBox_com_weight.TabIndex = 4;
-            this.textBox_com_weight.Text = "COM5";
+            this.textBox_com_weight.Text = "COM3";
             this.textBox_com_weight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox_data_weight

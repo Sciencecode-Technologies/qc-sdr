@@ -20,15 +20,15 @@ namespace serial_test
 {
     public partial class Form1 : Form
     {
-        public string com_info = "COM1";
-        public string weight_com_info = "COM1";
+        public string com_info = "COM2";
+        public string weight_com_info = "COM3";
         public string m_data;
         public string received_data;
         
         public System.Windows.Forms.Timer tm;
 
         csv_file_writer csvfw = new csv_file_writer(
-            @".", //\\192.168.0.12\Data\Bilgiislem\Suha\.service_folder\qc-sdr
+            @"\\192.168.0.12\Data\Bilgiislem\Suha\.service_folder\qc-sdr", 
             "qcsdr_data.csv",
             System.Net.Dns.GetHostName());
 
@@ -66,22 +66,37 @@ namespace serial_test
             StopBits.One); // None?
             _serialPort.Handshake = Handshake.None;
             if (!_serialPort.IsOpen)
+            {
                 _serialPort.Open();
+            }
+            else
+            {
+                _serialPort.Close();
+            }
+                
 
             checkConnection(button_connect, _serialPort); // for color
-
-            //Setup Timer
-            tm = new System.Windows.Forms.Timer();
-            tm.Tick += new EventHandler(tm_Tick);
-            tm.Interval = 1000; //in ms
-            tm.Enabled = true;  //Start timer
-
+        }
+        private void meter_reader()
+        {
+            if (!read_meter_flag)
+            {
+                read_meter_flag = true;
+                _serialPort.Write("R");
+                _serialPort.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceiver);
+                button_read.Text = "Durdur";
+            }
+            else
+            {
+                read_meter_flag = false;
+                button_read.Text = "Oku";
+            }
         }
         void tm_Tick(object sender, EventArgs e)
         {
             if (_serialPort.IsOpen)
             {
-                button_read_Click(sender, e);
+                meter_reader();
             }
         }
 
@@ -111,18 +126,7 @@ namespace serial_test
         private bool read_meter_flag = false;
         private void button_read_Click(object sender, EventArgs e)
         {
-            if (!read_meter_flag)
-            {
-                read_meter_flag = true;
-                _serialPort.Write("R");
-                _serialPort.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceiver);
-                button_read.Text = "Durdur";
-            }
-            else
-            {
-                read_meter_flag = false;
-                button_read.Text = "Oku";
-            }
+            meter_reader();
         }
 
         private void button_reset_Click(object sender, EventArgs e)
@@ -377,7 +381,11 @@ namespace serial_test
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            //Setup Timer
+            tm = new System.Windows.Forms.Timer();
+            tm.Tick += new EventHandler(tm_Tick);
+            tm.Interval = 1000; //in ms
+            tm.Enabled = true;  //Start timer
             // SERIAL_PORTS
             _serialPort = new SerialPort(
             com_info,

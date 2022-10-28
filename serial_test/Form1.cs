@@ -84,12 +84,11 @@ namespace serial_test
                 read_meter_flag = true;
                 _serialPort.Write("R");
                 _serialPort.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceiver);
-                button_read.Text = "Durdur";
+                button_read.Text = "Okunuyor";
             }
             else
             {
                 read_meter_flag = false;
-                button_read.Text = "Oku";
             }
         }
         void tm_Tick(object sender, EventArgs e)
@@ -103,7 +102,11 @@ namespace serial_test
         private void button2_Click(object sender, EventArgs e)
         {
             if (_serialPort.IsOpen)
+            {
                 _serialPort.Close();
+                button_read.Text = "Oku";
+            }
+                
 
             checkConnection(button_connect, _serialPort);
         }
@@ -126,6 +129,7 @@ namespace serial_test
         private bool read_meter_flag = false;
         private void button_read_Click(object sender, EventArgs e)
         {
+            tm.Enabled = true;  //Start timer
             meter_reader();
         }
 
@@ -159,12 +163,7 @@ namespace serial_test
         private void w_si_DataReceived(string data) {
             data = data.Trim();
             string[] _data = data.Split('\r');
-            //if (_data[_data.Length - 2] == "")
-            //{
             textBox_data_weight.Text = _data[_data.Length - 1].Trim(); //-1 num, if -2 has a value then make num negative
-            //}
-
-            //Console.WriteLine(data); // sondan altı veriyi al
             
         }
         private void w_sp_DataReceiver(object sender, SerialDataReceivedEventArgs e)
@@ -173,7 +172,6 @@ namespace serial_test
             {
                 Thread.Sleep(1500);
                 string w_data = _serialPort_weight.ReadExisting();//_serialPort.ReadExisting();
-                //_serialPort.Read(RECV_DATA_BUFFER, 0, 12);
             
                 this.BeginInvoke(new SetTextDeleg(w_si_DataReceived), new object[] { w_data });
             }
@@ -218,7 +216,7 @@ namespace serial_test
                 }
 
                 textBox_data_weight.Text = "";
-                button_read_weight.Text = "Durdur";
+                button_read_weight.Text = "Okunuyor";
                 _serialPort_weight.DataReceived += new SerialDataReceivedEventHandler(w_sp_DataReceiver);
             }
             else
@@ -282,6 +280,7 @@ namespace serial_test
             textBox_meter.Text = "0";
             textBox_totalw.Text = "0";
             textBox_rolik.Text = "0";
+            textBox_net_weight.Text = "0";
         }
 
         private void button_net_weight_copy_Click(object sender, EventArgs e)
@@ -359,6 +358,17 @@ namespace serial_test
                 {
                     textBox_commget.ForeColor = Color.LightPink;
                 }
+            }
+            else if (textBox_commget.Text == "autostart" || textBox_commget.Text == "asrt")
+            {
+                button_connect_Click(sender, e);
+                button_connect_weight_Click(sender, e);
+
+                button_read_Click(sender, e);
+                button_read_weight_Click(sender, e);
+
+                textBox_commget.Text = "off_details";
+
             }/*else if (textBox_commget.Text.Split(' ')[0] == "change_csv_dir")
             {
                 if (!csv_dir)
@@ -381,11 +391,14 @@ namespace serial_test
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //textBox_commget.Text = "asrt"; //autostart icin kullanılacak komut
+            // program acilir acilmaz veri okumaya baslar
+
             //Setup Timer
             tm = new System.Windows.Forms.Timer();
             tm.Tick += new EventHandler(tm_Tick);
             tm.Interval = 1000; //in ms
-            tm.Enabled = true;  //Start timer
+
             // SERIAL_PORTS
             _serialPort = new SerialPort(
             com_info,

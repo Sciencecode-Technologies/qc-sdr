@@ -171,6 +171,7 @@
             this.textBox_data.Name = "textBox_data";
             this.textBox_data.Size = new System.Drawing.Size(195, 35);
             this.textBox_data.TabIndex = 1;
+            this.textBox_data.Text = "METRE";
             this.textBox_data.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBox_data.TextChanged += new System.EventHandler(this.textBox_data_TextChanged);
             // 
@@ -294,6 +295,7 @@
             this.textBox_data_weight.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBox_data_weight.Size = new System.Drawing.Size(195, 33);
             this.textBox_data_weight.TabIndex = 0;
+            this.textBox_data_weight.Text = "AĞIRLIK";
             this.textBox_data_weight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button_read_weight

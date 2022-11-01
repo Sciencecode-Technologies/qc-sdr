@@ -28,7 +28,7 @@ namespace serial_test
         public System.Windows.Forms.Timer tm;
 
         csv_file_writer csvfw = new csv_file_writer(
-            @"\\192.168.0.12\Data\Bilgiislem\Suha\.service_folder\qc-sdr", 
+            @"\\192.168.0.12\Data\Bilgiislem\Suha\.service_folder\qc-sdr", //\\192.168.0.12\Data\Bilgiislem\Suha\.service_folder\qc-sdr 
             "qcsdr_data.csv",
             System.Net.Dns.GetHostName());
 
@@ -254,7 +254,7 @@ namespace serial_test
                 textBox_totalw.Text,
                 textBox_unitg.Text,
                 textBox_meter.Text,
-                textBox_result.Text);
+                textBox_net_weight.Text); // csv result<-net_weight
             // csv
         }
 
@@ -391,6 +391,7 @@ namespace serial_test
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            label_zaman.Text = DateTime.Now.ToString();
             //textBox_commget.Text = "asrt"; //autostart icin kullanılacak komut
             // program acilir acilmaz veri okumaya baslar
 
@@ -442,6 +443,21 @@ namespace serial_test
         private void textBox_data_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox_net_weight_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            csvfw.get_last_data(
+                textBox_rolik,
+                textBox_totalw,
+                textBox_unitg,
+                textBox_meter,
+                textBox_net_weight);
         }
     }
 }

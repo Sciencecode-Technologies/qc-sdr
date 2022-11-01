@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace serial_test
 {
@@ -19,7 +20,7 @@ namespace serial_test
             "total_weight",
             "unit_gram",
             "meter",
-            "result",
+            "net_weight",
             "hostname",
             "datetime"};
 
@@ -54,7 +55,7 @@ namespace serial_test
             return this.check_state;
         }
 
-        public bool add_row(string r, string k, string b, string m, string result)
+        public bool add_row(string r, string k, string b, string m, string net)
         {
             // Not: veri girisi sirasinda float degerlerde bulunan virgul, nokta ile degistirilmelidir.
             // csv icerisinde virgul ile tanimlanacak degerler problem cikartir.
@@ -65,11 +66,25 @@ namespace serial_test
                     + "," + k.Replace(',', '.')
                     + "," + b.Replace(',', '.')
                     + "," + m.Replace(',', '.')
-                    + "," + result.Replace(',', '.')
+                    + "," + net.Replace(',', '.')
                     + "," + this.author
                     + "," + DateTime.Now);
 
             return state;
+        }
+
+        public bool get_last_data(TextBox rolik, TextBox total, TextBox unit, TextBox meter, TextBox net)
+        {
+            bool status = true;
+            string[] lastData = File.ReadAllLines(this.folder_path + this.file_name)[File.ReadAllLines(this.folder_path + this.file_name).Length - 1].Split(',');
+
+            rolik.Text = lastData[0];
+            total.Text = lastData[1];
+            unit.Text  = lastData[2];
+            meter.Text = lastData[3];
+            net.Text   = lastData[4];
+
+            return status;
         }
     }
 }

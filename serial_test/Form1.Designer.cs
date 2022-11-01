@@ -68,6 +68,8 @@
             this.button_copy = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.textBox_commget = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label_zaman = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -312,6 +314,8 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.label_zaman);
+            this.groupBox5.Controls.Add(this.button1);
             this.groupBox5.Controls.Add(this.textBox_net_weight);
             this.groupBox5.Controls.Add(this.button_meter_copy);
             this.groupBox5.Controls.Add(this.button_net_weight_copy);
@@ -344,6 +348,7 @@
             this.textBox_net_weight.TabIndex = 9;
             this.textBox_net_weight.Text = "0";
             this.textBox_net_weight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_net_weight.TextChanged += new System.EventHandler(this.textBox_net_weight_TextChanged);
             // 
             // button_meter_copy
             // 
@@ -373,9 +378,9 @@
             // 
             this.button_clear.BackColor = System.Drawing.SystemColors.Control;
             this.button_clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.button_clear.Location = new System.Drawing.Point(6, 287);
+            this.button_clear.Location = new System.Drawing.Point(6, 284);
             this.button_clear.Name = "button_clear";
-            this.button_clear.Size = new System.Drawing.Size(356, 52);
+            this.button_clear.Size = new System.Drawing.Size(172, 55);
             this.button_clear.TabIndex = 6;
             this.button_clear.Text = "Temizle";
             this.button_clear.UseVisualStyleBackColor = false;
@@ -423,7 +428,7 @@
             // 
             this.textBox_meter.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox_meter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBox_meter.Location = new System.Drawing.Point(262, 44);
+            this.textBox_meter.Location = new System.Drawing.Point(256, 44);
             this.textBox_meter.Name = "textBox_meter";
             this.textBox_meter.Size = new System.Drawing.Size(100, 16);
             this.textBox_meter.TabIndex = 1;
@@ -476,7 +481,7 @@
             // 
             this.label_meter.AutoSize = true;
             this.label_meter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.label_meter.Location = new System.Drawing.Point(284, 20);
+            this.label_meter.Location = new System.Drawing.Point(278, 20);
             this.label_meter.Name = "label_meter";
             this.label_meter.Size = new System.Drawing.Size(49, 17);
             this.label_meter.TabIndex = 0;
@@ -526,6 +531,28 @@
             this.textBox_commget.Size = new System.Drawing.Size(668, 13);
             this.textBox_commget.TabIndex = 7;
             this.textBox_commget.TextChanged += new System.EventHandler(this.textBox_commget_TextChanged);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.Control;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.button1.Location = new System.Drawing.Point(184, 284);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(178, 55);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Son Kaydı Getir";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // label_zaman
+            // 
+            this.label_zaman.AutoSize = true;
+            this.label_zaman.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.label_zaman.Location = new System.Drawing.Point(249, 69);
+            this.label_zaman.Name = "label_zaman";
+            this.label_zaman.Size = new System.Drawing.Size(45, 13);
+            this.label_zaman.TabIndex = 11;
+            this.label_zaman.Text = "ZAMAN";
             // 
             // Form1
             // 
@@ -600,6 +627,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TextBox textBox_commget;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label_zaman;
     }
 }
 

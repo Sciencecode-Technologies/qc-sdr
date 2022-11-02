@@ -50,6 +50,8 @@
             this.textBox_data_weight = new System.Windows.Forms.TextBox();
             this.button_read_weight = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label_zaman = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.textBox_net_weight = new System.Windows.Forms.TextBox();
             this.button_meter_copy = new System.Windows.Forms.Button();
             this.button_net_weight_copy = new System.Windows.Forms.Button();
@@ -68,8 +70,6 @@
             this.button_copy = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.textBox_commget = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label_zaman = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -338,6 +338,28 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Bilgiler";
             // 
+            // label_zaman
+            // 
+            this.label_zaman.AutoSize = true;
+            this.label_zaman.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.label_zaman.Location = new System.Drawing.Point(249, 77);
+            this.label_zaman.Name = "label_zaman";
+            this.label_zaman.Size = new System.Drawing.Size(45, 13);
+            this.label_zaman.TabIndex = 11;
+            this.label_zaman.Text = "ZAMAN";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.Control;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.button1.Location = new System.Drawing.Point(184, 284);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(178, 55);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Son Kaydı Getir";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // textBox_net_weight
             // 
             this.textBox_net_weight.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -531,28 +553,6 @@
             this.textBox_commget.Size = new System.Drawing.Size(668, 13);
             this.textBox_commget.TabIndex = 7;
             this.textBox_commget.TextChanged += new System.EventHandler(this.textBox_commget_TextChanged);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.Control;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(184, 284);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(178, 55);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Son Kaydı Getir";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // label_zaman
-            // 
-            this.label_zaman.AutoSize = true;
-            this.label_zaman.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.label_zaman.Location = new System.Drawing.Point(249, 69);
-            this.label_zaman.Name = "label_zaman";
-            this.label_zaman.Size = new System.Drawing.Size(45, 13);
-            this.label_zaman.TabIndex = 11;
-            this.label_zaman.Text = "ZAMAN";
             // 
             // Form1
             // 

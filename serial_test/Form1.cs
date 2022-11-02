@@ -239,6 +239,8 @@ namespace serial_test
         }
         private void button5_Click(object sender, EventArgs e)
         {
+            label_zaman.Text = "";
+
             /*textBox_result.Text = formula(
                 double.Parse(textBox_unitg.Text),
                 double.Parse(textBox_totalw.Text),
@@ -275,6 +277,8 @@ namespace serial_test
 
         private void button_clear_Click_1(object sender, EventArgs e)
         {
+            label_zaman.Text = DateTime.Now.ToString();
+
             textBox_unitg.Text = "0";
             textBox_result.Text = "0";
             textBox_meter.Text = "0";
@@ -450,14 +454,31 @@ namespace serial_test
 
         }
 
+        
         private void button1_Click_1(object sender, EventArgs e)
         {
-            csvfw.get_last_data(
-                textBox_rolik,
-                textBox_totalw,
-                textBox_unitg,
-                textBox_meter,
-                textBox_net_weight);
+            son_kayit_form skf = new son_kayit_form();
+            //csvfw.get_last_data(
+            //    textBox_rolik,
+            //textBox_totalw,
+            //textBox_unitg,
+            //textBox_meter,
+            //textBox_net_weight,
+            //label_zaman);
+
+            string[] lastData = csvfw.get_last_data_array();
+
+            button1.Enabled = false;
+
+            skf.show_skf = button1;
+
+            skf.lastData_form1[0] = lastData[0];
+            skf.lastData_form1[1] = lastData[1];
+            skf.lastData_form1[2] = lastData[2];
+            skf.lastData_form1[3] = lastData[3];
+            skf.lastData_form1[4] = lastData[4];
+            skf.lastData_form1[5] = lastData[6];
+            skf.Show();
         }
     }
 }

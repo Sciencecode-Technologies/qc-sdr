@@ -53,3 +53,4 @@ C:\Users\suhar\Desktop\qc-sdr\serial_test\obj\Debug\serial_test.csproj.GenerateR
 C:\Users\suhar\Desktop\qc-sdr\serial_test\obj\Debug\serial_test.csproj.CoreCompileInputs.cache
 C:\Users\suhar\Desktop\qc-sdr\serial_test\obj\Debug\serial_test.exe
 C:\Users\suhar\Desktop\qc-sdr\serial_test\obj\Debug\serial_test.pdb
+C:\Users\sarslan\Desktop\qc-sdr\serial_test\obj\Debug\serial_test.son_kayit_form.resources

@@ -73,18 +73,25 @@ namespace serial_test
             return state;
         }
 
-        public bool get_last_data(TextBox rolik, TextBox total, TextBox unit, TextBox meter, TextBox net)
+        public bool get_last_data(TextBox rolik, TextBox total, TextBox unit, TextBox meter, TextBox net, Label time)
         {
             bool status = true;
             string[] lastData = File.ReadAllLines(this.folder_path + this.file_name)[File.ReadAllLines(this.folder_path + this.file_name).Length - 1].Split(',');
 
-            rolik.Text = lastData[0];
-            total.Text = lastData[1];
-            unit.Text  = lastData[2];
-            meter.Text = lastData[3];
-            net.Text   = lastData[4];
+            rolik.Text = lastData[0].Replace('.', ',');
+            total.Text = lastData[1].Replace('.', ',');
+            unit.Text  = lastData[2].Replace('.', ',');
+            meter.Text = lastData[3].Replace('.', ',');
+            net.Text   = lastData[4].Replace('.', ',');
+            time.Text  = lastData[6];
 
             return status;
+        }
+
+        public string[] get_last_data_array()
+        {
+            string[] lastData = File.ReadAllLines(this.folder_path + this.file_name)[File.ReadAllLines(this.folder_path + this.file_name).Length - 1].Split(',');
+            return lastData;
         }
     }
 }

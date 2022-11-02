@@ -26,8 +26,8 @@ namespace serial_test
             dataGridView_son_kayit.ColumnCount = 6;
             dataGridView_son_kayit.Columns[0].Name = "Rolik Ağırlık";
             dataGridView_son_kayit.Columns[1].Name = "Toplam Ağırlık";
-            dataGridView_son_kayit.Columns[2].Name = "Metre";
-            dataGridView_son_kayit.Columns[3].Name = "Birim Gramaj";
+            dataGridView_son_kayit.Columns[2].Name = "Birim Gramaj";
+            dataGridView_son_kayit.Columns[3].Name = "Metre";
             dataGridView_son_kayit.Columns[4].Name = "Net Ağırlık";
             dataGridView_son_kayit.Columns[5].Name = "Zaman";
 
@@ -36,7 +36,7 @@ namespace serial_test
             dataGridView_son_kayit.Rows.Add(
                 lastData_form1[0],
                 lastData_form1[1],
-                lastData_form1[2],
+                lastData_form1[2], 
                 lastData_form1[3],
                 lastData_form1[4],
                 lastData_form1[5]);

@@ -86,7 +86,7 @@
             this.Controls.Add(this.button_guncelle);
             this.Controls.Add(this.button_kapat);
             this.Controls.Add(this.dataGridView_son_kayit);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "son_kayit_form";

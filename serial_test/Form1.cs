@@ -247,8 +247,9 @@ namespace serial_test
                 double.Parse(textBox_meter.Text),
                 double.Parse(textBox_rolik.Text)).ToString();*/
 
-            textBox_unitg.Text = Math.Round(double.Parse(textBox_totalw.Text) / double.Parse(textBox_meter.Text), 3).ToString();
             textBox_net_weight.Text = (double.Parse(textBox_totalw.Text) - double.Parse(textBox_rolik.Text)).ToString();
+            textBox_unitg.Text = Math.Round(double.Parse(textBox_net_weight.Text) / double.Parse(textBox_meter.Text), 3).ToString();
+            
 
             
             csvfw.add_row(

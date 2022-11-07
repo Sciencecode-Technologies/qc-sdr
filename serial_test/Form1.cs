@@ -233,24 +233,12 @@ namespace serial_test
             //label_meter.ForeColor = Color.Green;
 
         }
-        private double formula(double b, double m, double k, double r)
-        {
-            return b * m * (k - r);
-        }
         private void button5_Click(object sender, EventArgs e)
         {
             label_zaman.Text = "";
 
-            /*textBox_result.Text = formula(
-                double.Parse(textBox_unitg.Text),
-                double.Parse(textBox_totalw.Text),
-                double.Parse(textBox_meter.Text),
-                double.Parse(textBox_rolik.Text)).ToString();*/
-
-            textBox_net_weight.Text = (double.Parse(textBox_totalw.Text) - double.Parse(textBox_rolik.Text)).ToString();
+            textBox_net_weight.Text = Math.Round(double.Parse(textBox_totalw.Text) - double.Parse(textBox_rolik.Text), 3).ToString();
             textBox_unitg.Text = Math.Round(double.Parse(textBox_net_weight.Text) / double.Parse(textBox_meter.Text), 3).ToString();
-            
-
             
             csvfw.add_row(
                 textBox_rolik.Text,

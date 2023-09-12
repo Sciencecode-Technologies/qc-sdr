@@ -6,7 +6,7 @@ using System.Text;
 
 namespace serial_test
 {
-    internal class csv_file_writer
+    internal class Csv_file_writer
     {
         public string folder_path;
         public string file_name;
@@ -23,7 +23,7 @@ namespace serial_test
             "hostname",
             "datetime"};
 
-        public csv_file_writer(string folder_path, string file_name, string author)
+        public Csv_file_writer(string folder_path, string file_name, string author)
         {
             this.folder_path = folder_path+ @"\";
             this.file_name = file_name;

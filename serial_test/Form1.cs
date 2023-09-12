@@ -13,7 +13,7 @@ using System.Threading;
 using System.Globalization;
 using System.Reflection;
 using System.Xml.Linq;
-using static serial_test.csv_file_writer;
+using static serial_test.Csv_file_writer;
 
 
 namespace serial_test
@@ -27,8 +27,8 @@ namespace serial_test
         
         public System.Windows.Forms.Timer tm;
 
-        csv_file_writer csvfw = new csv_file_writer(
-            @".", //\\192.168.0.12\Data\Bilgiislem\Suha\.service_folder\qc-sdr
+        Csv_file_writer csvfw = new Csv_file_writer(
+            @".", //\\192.168.1.100\qc-sdr
             "qcsdr_data.csv",
             System.Net.Dns.GetHostName());
 
